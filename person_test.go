@@ -4,12 +4,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/bxcodec/faker/v3/support/slice"
+	"github.com/bxcodec/faker/v4/pkg/slice"
 )
-
-func TestSetDowser(t *testing.T) {
-	SetDowser(Person{})
-}
 
 func TestTitleMale(t *testing.T) {
 	male, err := GetPerson().TitleMale(reflect.Value{})
@@ -147,6 +143,7 @@ func TestFakeNameFemale(t *testing.T) {
 	if name == "" {
 		t.Error("Expected from function name string get empty string")
 	}
+	t.Log(name)
 }
 
 func TestFakeGender(t *testing.T) {
@@ -164,4 +161,34 @@ func TestFakeGenderPublicFunction(t *testing.T) {
 	if !slice.Contains(genders, gender) {
 		t.Error("Expected value from variable genders in function Gender")
 	}
+}
+
+func TestChineseFirstName(t *testing.T) {
+	firstname, err := GetPerson().ChineseFirstName(reflect.Value{})
+	if err != nil {
+		t.Error("Expected  not error, got err", err)
+	}
+	t.Log(firstname)
+	if !slice.Contains(chineseFirstNames, firstname.(string)) {
+		t.Error("Expected value from either chineseFirstNames in function ChineseFirstName")
+	}
+}
+
+func TestChineseLastName(t *testing.T) {
+	firstname, err := GetPerson().ChineseLastName(reflect.Value{})
+	if err != nil {
+		t.Error("Expected  not error, got err", err)
+	}
+	t.Log(firstname)
+	if !slice.Contains(chineseLastNames, firstname.(string)) {
+		t.Error("Expected value from either chineseLastNames in function ChineseLastName")
+	}
+}
+
+func TestChineseName(t *testing.T) {
+	firstname, err := GetPerson().ChineseName(reflect.Value{})
+	if err != nil {
+		t.Error("Expected  not error, got err", err)
+	}
+	t.Log(firstname)
 }

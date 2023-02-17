@@ -6,12 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bxcodec/faker/v3/support/slice"
+	"github.com/bxcodec/faker/v4/pkg/slice"
 )
-
-func TestSetDateTimer(t *testing.T) {
-	SetDateTimer(DateTime{})
-}
 
 func TestUnixTimeValueValid(t *testing.T) {
 	d := GetDateTimer()
@@ -110,7 +106,6 @@ func TestDayOfWeekReturnsDifferentValues(t *testing.T) {
 	if len(dayMap) < 1 {
 		t.Error("function need return at least one day item")
 	}
-
 }
 
 func TestDayOfMonth(t *testing.T) {
